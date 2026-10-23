@@ -1,60 +1,38 @@
 
-/* Gleichmäßige Verzierungen ohne harte horizontale Kante */
+/* Kräftige, einheitliche Verzierungen im Kopfbereich */
 
+/* Zusätzliche Aufhellung vollständig entfernen */
+.frame::before {
+  display: none !important;
+}
+
+/* Blumen und Reisemotive gleich kräftig darstellen */
 .corner {
-  background-size: 100% auto;
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-.top-left,
-.top-right {
-  width: 58%;
-  height: 570px;
-  top: 0;
-}
-
+/* Reisemotive unterhalb der Blumen */
 .bottom-left,
 .bottom-right {
-  width: 58%;
-  height: 570px;
-  top: 0;
-  bottom: auto;
-  background-position: center top;
+  top: 0 !important;
+  bottom: auto !important;
+  height: 650px !important;
+  opacity: 1 !important;
+  background-size: 100% auto !important;
 }
 
-/* Nur direkt hinter der Überschrift leicht aufhellen */
-.frame::before {
-  top: 95px;
-  left: 12%;
-  right: 12%;
-  height: 300px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255,250,241,.65) 0%,
-    rgba(255,250,241,.35) 45%,
-    rgba(255,250,241,0) 80%
-  );
-}
-
+/* Auf dem Smartphone */
 @media (max-width: 680px) {
-  .corner {
-    opacity: 1;
-  }
-
   .top-left,
   .top-right,
   .bottom-left,
   .bottom-right {
-    width: 68%;
-    height: 570px;
-    top: 0;
-    bottom: auto;
+    width: 68% !important;
+    opacity: 1 !important;
   }
 
-  .frame::before {
-    top: 115px;
-    left: 8%;
-    right: 8%;
-    height: 260px;
+  .bottom-left,
+  .bottom-right {
+    height: 650px !important;
   }
 }

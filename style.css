@@ -1,281 +1,354 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
-/* Grundgestaltung */
+:root {
+  color-scheme: light;
+  --ink: #593820;
+  --gold: #b78a4a;
+  --darkgold: #84602f;
+  --paper: #faf3e4;
+  --green: #dbe5c9;
+  --red: #f3d5d0;
+}
+
 * {
   box-sizing: border-box;
 }
 
-html {
-  min-height: 100%;
-  background: #f6efdf;
-}
-
 body {
   margin: 0;
-  min-height: 100vh;
-  color: #59452f;
+  background: #e9ddc7;
+  color: var(--ink);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  background:
-    radial-gradient(ellipse at 50% 15%, #fffaf0 0%, #f6efdf 60%, #e9dcc3 100%);
-}
-
-button,
-select {
-  font: inherit;
+  font-size: 20px;
 }
 
 .page {
   position: relative;
-  isolation: isolate;
-  width: 100%;
-  min-height: 100vh;
-  padding: 28px 16px 50px;
   overflow: hidden;
+  min-height: 100vh;
+  max-width: 1060px;
+  margin: 0 auto;
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    #fffaf1 0%,
+    #f9f1df 68%,
+    #e9d6b6 100%
+  );
+  box-shadow: 0 0 45px #5e472d35;
+  padding: 30px 28px 42px;
 }
 
-/* Vier dekorative Bilder */
-.corner {
-  position: absolute;
-  z-index: 0;
-  width: 55%;
-  height: 580px;
-  top: 0;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  opacity: 1;
-  pointer-events: none;
-}
-
-.top-left {
-  left: 0;
-  background-image: url('flowers-left.webp');
-  background-position: left top;
-}
-
-.top-right {
-  right: 0;
-  background-image: url('flowers-right.webp');
-  background-position: right top;
-}
-
-.bottom-left {
-  left: 0;
-  background-image: url('travel-left.webp');
-  background-position: left top;
-}
-
-.bottom-right {
-  right: 0;
-  background-image: url('travel-right.webp');
-  background-position: right top;
-}
-
-/* Hauptbereich */
 .frame {
   position: relative;
-  z-index: 1;
-  width: min(100%, 760px);
-  margin: 0 auto;
-  padding: 25px 28px 36px;
+  z-index: 2;
+  min-height: calc(100vh - 70px);
+  border: 1px solid #bd975e;
+  outline: 1px solid #d6bd8e;
+  outline-offset: -9px;
+  padding: 22px 28px 35px;
   text-align: center;
 }
 
-/* Keine zusätzliche Aufhellung der Landschaftsbilder */
-.frame::before {
-  display: none;
+/* Hintergrundverzierungen */
+.corner {
+  position: absolute;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 1;
 }
 
+/* Blumen oben links */
+.top-left {
+  background-image: url('flowers-left.webp');
+  width: 47%;
+  height: 350px;
+  left: 0;
+  top: 0;
+  background-position: left top;
+  z-index: 2;
+}
+
+/* Blumen oben rechts */
+.top-right {
+  background-image: url('flowers-right.webp');
+  width: 47%;
+  height: 350px;
+  right: 0;
+  top: 0;
+  background-position: right top;
+  z-index: 2;
+}
+
+/* Reisemotive links */
+.bottom-left {
+  background-image: url('travel-left.webp');
+  width: 43%;
+  height: 380px;
+  left: 0;
+  top: 165px;
+  bottom: auto;
+  background-position: left top;
+}
+
+/* Reisemotive rechts */
+.bottom-right {
+  background-image: url('travel-right.webp');
+  width: 43%;
+  height: 380px;
+  right: 0;
+  top: 165px;
+  bottom: auto;
+  background-position: right top;
+}
+
+/* Oberes Sternenornament */
 .compass {
-  color: #a47b40;
-  font-size: 21px;
-  letter-spacing: 8px;
-  margin-bottom: 12px;
+  font-size: 25px;
+  color: var(--gold);
+  letter-spacing: 9px;
 }
 
 header {
-  position: relative;
-  padding: 12px 0 22px;
+  padding: 5px 0 6px;
 }
 
+/* Romantische Hauptüberschrift */
 h1 {
-  margin: 10px 0 8px;
-  color: #86612e;
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(56px, 9vw, 96px);
+  font-family: 'Great Vibes', 'Brush Script MT', cursive;
   font-weight: 400;
-  line-height: 1.06;
-  text-shadow: 0 1px 2px rgba(255, 251, 241, 0.8);
+  font-size: clamp(48px, 8vw, 88px);
+  line-height: .94;
+  margin: 12px 0 16px;
+  color: #805020;
+  text-shadow: 0 1px #fff;
 }
 
 h1 em {
+  font-weight: 400;
   font-style: normal;
 }
 
+/* Unterüberschrift */
 .subtitle {
-  max-width: 500px;
-  margin: 18px auto 12px;
-  font-size: clamp(17px, 3.5vw, 23px);
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px #fffaf0;
+  font-size: clamp(13px, 2vw, 19px);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 .ornament {
-  color: #ac864c;
-  font-size: 20px;
-  letter-spacing: 3px;
-  margin: 18px auto;
+  color: var(--gold);
+  margin: 12px 0;
+  font-size: 21px;
 }
 
 /* Rätselbereich */
 .game {
+  width: min(100%, 630px);
+  margin: 22px auto 0;
+  background: #fff9edb5;
+  border: 1px solid #d7b887;
+  box-shadow: 0 4px 30px #b38a4b20;
+  padding: 20px 25px 26px;
   position: relative;
-  z-index: 2;
-  max-width: 580px;
-  margin: 15px auto 0;
-  padding: 30px 24px 26px;
-  border: 1px solid rgba(161, 123, 67, 0.65);
-  border-radius: 12px;
-  background: rgba(255, 250, 240, 0.94);
-  box-shadow:
-    0 0 0 5px rgba(255, 249, 236, 0.65),
-    0 0 0 6px rgba(161, 123, 67, 0.28),
-    0 10px 32px rgba(94, 67, 35, 0.12);
 }
 
-.game h2 {
-  margin: 0 0 20px;
-  color: #805c30;
-  font-size: clamp(23px, 5vw, 31px);
+.game:before,
+.game:after {
+  content: '❧';
+  position: absolute;
+  color: var(--gold);
+  font-size: 29px;
+}
+
+.game:before {
+  top: 1px;
+  left: 7px;
+}
+
+.game:after {
+  bottom: 1px;
+  right: 7px;
+  transform: rotate(180deg);
+}
+
+h2 {
   font-weight: 600;
+  font-size: 19px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  margin: 4px 0 16px;
 }
 
+/* Tagesauswahl */
 .day-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 10px;
+  margin: auto;
+  width: min(100%, 370px);
+  border: 1px solid #c49c63;
+  padding: 5px;
+  background: #f6e8cc;
 }
 
 .day-nav button {
-  width: 42px;
-  height: 42px;
-  border: 1px solid #b99b69;
-  border-radius: 8px;
-  background: #f8edda;
-  color: #825f32;
-  font-size: 19px;
+  font: 20px Georgia, serif;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  padding: 9px 13px;
   cursor: pointer;
 }
 
 .day-nav button:disabled {
-  opacity: 0.4;
+  opacity: .3;
   cursor: default;
 }
 
 .day-nav select {
-  min-width: 155px;
-  max-width: 100%;
-  height: 43px;
-  padding: 6px 14px;
-  border: 1px solid #b99b69;
-  border-radius: 8px;
-  background: #fffaf1;
-  color: #654827;
-  font-size: 20px;
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  color: var(--ink);
+  font-size: 29px;
   text-align: center;
+  cursor: pointer;
+  outline-offset: 4px;
 }
 
 .instruction {
-  margin: 12px 0 19px;
-  font-size: 20px;
   font-style: italic;
-  line-height: 1.35;
+  font-size: 21px;
+  margin: 17px 0 18px;
 }
 
-/* Sternenraster */
+/* Raster mit 24 Feldern */
 .board {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
-  width: 100%;
-  margin: 0 auto;
 }
 
-.board button,
-.board .cell {
+.cell {
+  position: relative;
+  aspect-ratio: 1;
+  min-width: 0;
+  background: #fff9ed;
+  border: 1px solid #bc935a;
+  outline: 1px solid #dfc8a3;
+  outline-offset: -5px;
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(18px, 3.8vw, 29px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .12s, transform .12s;
+}
+
+/* Kleine goldene Ornamente */
+.cell:before,
+.cell:after {
+  content: '❧';
+  position: absolute;
+  font-size: 12px;
+  color: #caa66c;
+  line-height: 1;
+}
+
+.cell:before {
+  top: 4px;
+  left: 5px;
+}
+
+.cell:after {
+  bottom: 4px;
+  right: 5px;
+  transform: rotate(180deg);
+}
+
+.cell:hover {
+  transform: translateY(-2px);
+  background: #fff2d9;
+}
+
+.cell:focus-visible {
+  outline: 3px solid #816337;
+  outline-offset: 2px;
+}
+
+/* Richtige Antworten */
+.cell.solved,
+.cell.correct {
+  background: var(--green);
+  border-color: #819068;
+}
+
+/* Falsche Antworten */
+.cell.wrong {
+  background: var(--red);
+  border-color: #b6685f;
+}
+
+.tick {
+  position: absolute;
+  right: 8px;
+  top: 4px;
+  font: 700 17px Georgia, serif;
+  color: #567248;
+}
+
+/* Rückmeldung */
+.feedback {
+  margin: 22px auto 7px;
+  min-height: 53px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
-  aspect-ratio: 1;
-  padding: 2px;
-  border: 1px solid #bba075;
-  border-radius: 6px;
-  background: linear-gradient(145deg, #fffaf0, #ecddbf);
-  color: #73522e;
-  font-size: clamp(14px, 3.2vw, 22px);
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
-}
-
-.board button:active,
-.board .cell:active {
-  transform: scale(0.96);
-}
-
-.board .correct,
-.board .right,
-.board .solved {
-  background: #d5e8ce !important;
-  border-color: #6b9866 !important;
-  color: #365e34 !important;
-}
-
-.board .incorrect,
-.board .wrong {
-  background: #f0d3cc !important;
-  border-color: #bf786d !important;
-  color: #8b3931 !important;
-}
-
-.feedback {
-  min-height: 27px;
-  margin: 19px auto 8px;
-  font-size: 19px;
+  border: 1px solid #d8bc90;
+  padding: 9px 14px;
+  background: #f7e8d0;
+  font-size: 21px;
   font-style: italic;
-  line-height: 1.35;
-  color: #8a683e;
+}
+
+.feedback.success {
+  background: #e6ecd8;
+  border-color: #8e9d76;
+}
+
+.feedback.error {
+  background: #f6e2dc;
+  border-color: #bc8175;
 }
 
 .progress {
-  margin-top: 9px;
-  color: #80643e;
   font-size: 17px;
+  letter-spacing: .04em;
+  color: #866c49;
+  margin-top: 12px;
 }
 
 /* Abschluss */
 footer {
-  margin: 31px auto 0;
-  color: #896b46;
-}
-
-footer .ornament {
-  margin-bottom: 12px;
+  margin: 25px auto 0;
+  font-style: italic;
+  font-size: 23px;
+  line-height: 1.3;
 }
 
 footer p {
   margin: 0;
-  font-size: 19px;
-  font-style: italic;
-  line-height: 1.4;
 }
 
-/* Unsichtbare Beschriftungen für Screenreader */
+/* Unsichtbare Beschriftungen */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -288,85 +361,92 @@ footer p {
   border: 0;
 }
 
-/* Smartphone */
+/* Anpassungen für Smartphones */
 @media (max-width: 680px) {
-  .page {
-    padding: 15px 10px 35px;
-  }
 
-  .corner {
-    width: 68%;
-    height: 580px;
-    opacity: 1;
+  .page {
+    padding: 13px;
   }
 
   .frame {
-    padding: 17px 9px 28px;
+    padding: 26px 11px 22px;
+    outline-offset: -6px;
   }
 
-  .compass {
-    font-size: 17px;
-    letter-spacing: 5px;
+  /* Hintergrundbilder bleiben kräftig */
+  .corner {
+    opacity: 1;
   }
 
-  header {
-    padding-top: 16px;
+  /* Blumen im oberen Bereich */
+  .top-left,
+  .top-right {
+    width: 55%;
+    height: 270px;
+    top: 0;
   }
 
-  h1 {
-    margin-top: 20px;
-    font-size: clamp(55px, 12vw, 78px);
-  }
-
-  .subtitle {
-    max-width: 300px;
-    font-size: 18px;
-  }
-
-  .ornament {
-    font-size: 15px;
-    letter-spacing: 1px;
+  /* Reisemotive darunter */
+  .bottom-left,
+  .bottom-right {
+    width: 49%;
+    height: 320px;
+    top: 170px;
+    bottom: auto;
   }
 
   .game {
-    margin-top: 18px;
-    padding: 24px 13px 22px;
-  }
-
-  .game h2 {
-    font-size: 24px;
-  }
-
-  .day-nav {
-    gap: 9px;
-  }
-
-  .day-nav button {
-    width: 36px;
-    height: 40px;
-  }
-
-  .day-nav select {
-    min-width: 130px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  .instruction {
-    font-size: 18px;
+    padding: 15px 10px 18px;
+    margin-top: 25px;
   }
 
   .board {
     gap: 5px;
   }
 
-  .board button,
-  .board .cell {
-    border-radius: 4px;
-    font-size: clamp(12px, 3.4vw, 18px);
+  .cell:before,
+  .cell:after {
+    font-size: 8px;
+  }
+
+  .cell:before {
+    top: 2px;
+    left: 2px;
+  }
+
+  .cell:after {
+    bottom: 2px;
+    right: 2px;
+  }
+
+  .tick {
+    right: 3px;
+    top: 1px;
+    font-size: 11px;
+  }
+
+  .subtitle {
+    max-width: 270px;
+    margin: auto;
+  }
+
+  h1 {
+    margin-top: 23px;
+  }
+
+  .day-nav select {
+    font-size: 24px;
+  }
+
+  .instruction {
+    font-size: 18px;
   }
 
   .feedback {
     font-size: 18px;
+  }
+
+  footer {
+    font-size: 19px;
   }
 }

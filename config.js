@@ -1,5 +1,5 @@
 
-const SOLUTIONS = {
+window.STERNEN_LOESUNGEN = {
   1: "A1",
   2: "A2",
   3: "A3",

@@ -1,38 +1,372 @@
 
-/* Kräftige, einheitliche Verzierungen im Kopfbereich */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
-/* Zusätzliche Aufhellung vollständig entfernen */
-.frame::before {
-  display: none !important;
+/* Grundgestaltung */
+* {
+  box-sizing: border-box;
 }
 
-/* Blumen und Reisemotive gleich kräftig darstellen */
+html {
+  min-height: 100%;
+  background: #f6efdf;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #59452f;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background:
+    radial-gradient(ellipse at 50% 15%, #fffaf0 0%, #f6efdf 60%, #e9dcc3 100%);
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  padding: 28px 16px 50px;
+  overflow: hidden;
+}
+
+/* Vier dekorative Bilder */
 .corner {
-  opacity: 1 !important;
+  position: absolute;
+  z-index: 0;
+  width: 55%;
+  height: 580px;
+  top: 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  opacity: 1;
+  pointer-events: none;
 }
 
-/* Reisemotive unterhalb der Blumen */
-.bottom-left,
+.top-left {
+  left: 0;
+  background-image: url('flowers-left.webp');
+  background-position: left top;
+}
+
+.top-right {
+  right: 0;
+  background-image: url('flowers-right.webp');
+  background-position: right top;
+}
+
+.bottom-left {
+  left: 0;
+  background-image: url('travel-left.webp');
+  background-position: left top;
+}
+
 .bottom-right {
-  top: 0 !important;
-  bottom: auto !important;
-  height: 650px !important;
-  opacity: 1 !important;
-  background-size: 100% auto !important;
+  right: 0;
+  background-image: url('travel-right.webp');
+  background-position: right top;
 }
 
-/* Auf dem Smartphone */
+/* Hauptbereich */
+.frame {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 25px 28px 36px;
+  text-align: center;
+}
+
+/* Keine zusätzliche Aufhellung der Landschaftsbilder */
+.frame::before {
+  display: none;
+}
+
+.compass {
+  color: #a47b40;
+  font-size: 21px;
+  letter-spacing: 8px;
+  margin-bottom: 12px;
+}
+
+header {
+  position: relative;
+  padding: 12px 0 22px;
+}
+
+h1 {
+  margin: 10px 0 8px;
+  color: #86612e;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 400;
+  line-height: 1.06;
+  text-shadow: 0 1px 2px rgba(255, 251, 241, 0.8);
+}
+
+h1 em {
+  font-style: normal;
+}
+
+.subtitle {
+  max-width: 500px;
+  margin: 18px auto 12px;
+  font-size: clamp(17px, 3.5vw, 23px);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px #fffaf0;
+}
+
+.ornament {
+  color: #ac864c;
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin: 18px auto;
+}
+
+/* Rätselbereich */
+.game {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  margin: 15px auto 0;
+  padding: 30px 24px 26px;
+  border: 1px solid rgba(161, 123, 67, 0.65);
+  border-radius: 12px;
+  background: rgba(255, 250, 240, 0.94);
+  box-shadow:
+    0 0 0 5px rgba(255, 249, 236, 0.65),
+    0 0 0 6px rgba(161, 123, 67, 0.28),
+    0 10px 32px rgba(94, 67, 35, 0.12);
+}
+
+.game h2 {
+  margin: 0 0 20px;
+  color: #805c30;
+  font-size: clamp(23px, 5vw, 31px);
+  font-weight: 600;
+}
+
+.day-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.day-nav button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #b99b69;
+  border-radius: 8px;
+  background: #f8edda;
+  color: #825f32;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.day-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.day-nav select {
+  min-width: 155px;
+  max-width: 100%;
+  height: 43px;
+  padding: 6px 14px;
+  border: 1px solid #b99b69;
+  border-radius: 8px;
+  background: #fffaf1;
+  color: #654827;
+  font-size: 20px;
+  text-align: center;
+}
+
+.instruction {
+  margin: 12px 0 19px;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* Sternenraster */
+.board {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.board button,
+.board .cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 2px;
+  border: 1px solid #bba075;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #fffaf0, #ecddbf);
+  color: #73522e;
+  font-size: clamp(14px, 3.2vw, 22px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.board button:active,
+.board .cell:active {
+  transform: scale(0.96);
+}
+
+.board .correct,
+.board .right,
+.board .solved {
+  background: #d5e8ce !important;
+  border-color: #6b9866 !important;
+  color: #365e34 !important;
+}
+
+.board .incorrect,
+.board .wrong {
+  background: #f0d3cc !important;
+  border-color: #bf786d !important;
+  color: #8b3931 !important;
+}
+
+.feedback {
+  min-height: 27px;
+  margin: 19px auto 8px;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.35;
+  color: #8a683e;
+}
+
+.progress {
+  margin-top: 9px;
+  color: #80643e;
+  font-size: 17px;
+}
+
+/* Abschluss */
+footer {
+  margin: 31px auto 0;
+  color: #896b46;
+}
+
+footer .ornament {
+  margin-bottom: 12px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Unsichtbare Beschriftungen für Screenreader */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Smartphone */
 @media (max-width: 680px) {
-  .top-left,
-  .top-right,
-  .bottom-left,
-  .bottom-right {
-    width: 68% !important;
-    opacity: 1 !important;
+  .page {
+    padding: 15px 10px 35px;
   }
 
-  .bottom-left,
-  .bottom-right {
-    height: 650px !important;
+  .corner {
+    width: 68%;
+    height: 580px;
+    opacity: 1;
+  }
+
+  .frame {
+    padding: 17px 9px 28px;
+  }
+
+  .compass {
+    font-size: 17px;
+    letter-spacing: 5px;
+  }
+
+  header {
+    padding-top: 16px;
+  }
+
+  h1 {
+    margin-top: 20px;
+    font-size: clamp(55px, 12vw, 78px);
+  }
+
+  .subtitle {
+    max-width: 300px;
+    font-size: 18px;
+  }
+
+  .ornament {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .game {
+    margin-top: 18px;
+    padding: 24px 13px 22px;
+  }
+
+  .game h2 {
+    font-size: 24px;
+  }
+
+  .day-nav {
+    gap: 9px;
+  }
+
+  .day-nav button {
+    width: 36px;
+    height: 40px;
+  }
+
+  .day-nav select {
+    min-width: 130px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .instruction {
+    font-size: 18px;
+  }
+
+  .board {
+    gap: 5px;
+  }
+
+  .board button,
+  .board .cell {
+    border-radius: 4px;
+    font-size: clamp(12px, 3.4vw, 18px);
+  }
+
+  .feedback {
+    font-size: 18px;
   }
 }
